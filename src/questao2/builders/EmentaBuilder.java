@@ -4,46 +4,45 @@ import questao2.produtos.Disciplina;
 import questao2.produtos.Ementa;
 import questao2.produtos.Livro;
 
-// BUILDER CONCRETO
+// BUILDER CONCRETO DE EMENTA
 public class EmentaBuilder implements IBuilder {
 
     private Ementa ementa;
 
-    public EmentaBuilder() {
-        this.resetar();
-    }
-
     @Override
-    public EmentaBuilder resetar() {
+    public IBuilder resetar() {
         this.ementa = new Ementa();
         return this;
     }
 
     @Override
-    public EmentaBuilder setNome(String nome) {
+    public IBuilder setNome(String nome) {
         this.ementa.setNome(nome);
         return this;
     }
 
     @Override
-    public EmentaBuilder setCodigo(String codigo) {
+    public IBuilder setCodigo(String codigo) {
         this.ementa.setCodigo(codigo);
         return this;
     }
 
     @Override
-    public EmentaBuilder addDisciplina(Disciplina disciplina) {
+    public IBuilder addDisciplina(Disciplina disciplina) {
         this.ementa.addDisciplina(disciplina);
         return this;
     }
 
     @Override
-    public EmentaBuilder addLivro(Livro livro) {
+    public IBuilder addLivro(Livro livro) {
         this.ementa.addLivro(livro);
         return this;
     }
-    
+
     public Ementa construir() {
-        return this.ementa;
+        Ementa ementa = this.ementa;
+        this.resetar();
+        return ementa;
     }
+    
 }
